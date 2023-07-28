@@ -3,10 +3,8 @@ import Home from "./routes/home/home.component";
 import Navigation from "./routes/navigation/navigation.component";
 import SignUpForm from "./components/signup/signup.component";
 import Authentication from "./routes/authentication/sign-in.component";
+import Shop from "./routes/shop/shop.component";
 
-const Shop = () => {
-  return <h1>I ame the shop page</h1>;
-};
 const App = () => {
   return (
     <Routes>
@@ -15,6 +13,7 @@ const App = () => {
         <Route path="shop" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="signup" element={<SignUpForm />} />
+        
       </Route>
     </Routes>
   );

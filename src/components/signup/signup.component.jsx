@@ -13,9 +13,13 @@ const defaultFormFields = {
   password: "",
   confirmPassword: "",
 };
+
+
 const SignUpForm = () => {
+
   const [formData, setFormData] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formData;
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -30,7 +34,6 @@ const SignUpForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     if (formData.password !== formData.confirmPassword) {
       alert("password do not match");
       return;
@@ -40,7 +43,6 @@ const SignUpForm = () => {
         email,
         password
       );
-      console.log(user);
       await createUserDocumentFromAuth(user, { displayName });
       resetFormField();
     } catch (error) {
