@@ -21,9 +21,12 @@ const Navigation = () => {
             SHOP
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>
-              SIGN OUT
-            </span>
+            <div>
+              <span>{currentUser.displayName.toUpperCase()}</span>
+              <span className="nav-link" onClick={signOutUser}>
+                SIGN OUT
+              </span>
+            </div>
           ) : (
             <Link className="nav-link" to="/auth">
               SIGN IN
