@@ -19,14 +19,3 @@ const Shop = () => {
 };
 
 export default Shop;
-
-//return (
-//   <Fragment key={title}>
-//   <h2>{title}</h2>
-//   <div className="products-container">
-//     {categoriesMap[title].map((product) => (
-//       <ProductCard key={product.id} products={product} />
-//     ))}
-//   </div>
-// </Fragment>
-// );
