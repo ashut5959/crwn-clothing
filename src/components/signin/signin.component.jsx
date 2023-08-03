@@ -6,17 +6,20 @@ import {
   signInAuthWithEmailAndPassword,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
+import { useNavigate } from "react-router-dom";
 
 const defaultForm = {
   email: "",
   password: "",
 };
 const SignInForm = () => {
+  const navigate = useNavigate();
   const [formDetail, setFormDetail] = useState(defaultForm);
   const { email, password } = formDetail;
 
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+    const signIn = await signInWithGooglePopup();
+    if (signIn) navigate("/shop");
   };
 
   const handleChange = (e) => {
