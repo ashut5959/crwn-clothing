@@ -6,15 +6,14 @@ import Category from "../category/category.component";
 import { useEffect } from "react";
 
 // import { setCategories } from "../../store/category/category.action";
-import { fecthCategoriesAsync } from "../../store/category/category.action";
+// import { fecthCategoriesAsync } from "../../store/category/category.action";
 import { useDispatch } from "react-redux";
+import { fetchCategoriesStart } from "../../store/category/category.action";
 const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    
-      dispatch(fecthCategoriesAsync());
-   
+    dispatch(fetchCategoriesStart());
   }, [dispatch]);
 
   return (
