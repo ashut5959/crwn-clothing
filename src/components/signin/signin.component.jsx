@@ -2,24 +2,24 @@ import { useState } from "react";
 import Button from "../button/button.componenet";
 import FromInput from "../form-input/form-input.component";
 import "./signin.styles.scss";
+import { useDispatch } from "react-redux";
 import {
-  signInAuthWithEmailAndPassword,
-  signInWithGooglePopup,
-} from "../../utils/firebase/firebase.utils";
-import { useNavigate } from "react-router-dom";
+  emailSignInStart,
+  googleSignInStart,
+} from "../../store/user/user.action";
 
 const defaultForm = {
   email: "",
   password: "",
 };
 const SignInForm = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [formDetail, setFormDetail] = useState(defaultForm);
   const { email, password } = formDetail;
 
   const signInWithGoogle = async () => {
-    const signIn = await signInWithGooglePopup();
-    if (signIn) navigate("/shop");
+    dispatch(googleSignInStart());
   };
 
   const handleChange = (e) => {
@@ -38,7 +38,7 @@ const SignInForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signInAuthWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password": {
